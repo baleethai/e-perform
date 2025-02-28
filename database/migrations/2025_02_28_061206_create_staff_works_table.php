@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('positions', function (Blueprint $table) {
+        Schema::create('staff_works', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('department_id')->nullable();
-            $table->string('type')->nullable();
-            $table->string('code')->unique();
-            $table->string('name');
+            $table->foreignId('staff_id')->constrained();
+            $table->string('year')->nullable();
+            $table->string('workplace');
+            $table->string('position');
+            $table->string('work_evidence')->nullable();
             $table->integer('sort')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('positions');
+        Schema::dropIfExists('staff_works');
     }
 };

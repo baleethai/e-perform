@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('positions', function (Blueprint $table) {
+        Schema::create('portfolio_acamedic_student_activity_advisors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('department_id')->nullable();
-            $table->string('type')->nullable();
-            $table->string('code')->unique();
-            $table->string('name');
-            $table->integer('sort')->nullable();
-            $table->boolean('status')->default(true);
+            $table->integer('portfolio_academic_id');
+            $table->text('subject');
+            $table->text('description');
+            $table->text('documents')->nullable();     
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('positions');
+        Schema::dropIfExists('portfolio_acamedic_student_activity_advisors');
     }
 };

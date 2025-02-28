@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('positions', function (Blueprint $table) {
+        Schema::create('portfolio_acamedics', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('department_id')->nullable();
-            $table->string('type')->nullable();
-            $table->string('code')->unique();
-            $table->string('name');
-            $table->integer('sort')->nullable();
-            $table->boolean('status')->default(true);
+            $table->foreignId('staff_id')->constrained();
+            $table->integer('no');
+            $table->date('started_at');
+            $table->date('ended_at');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('positions');
+        Schema::dropIfExists('portfolio_acamedics');
     }
 };

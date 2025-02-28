@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('positions', function (Blueprint $table) {
+        Schema::create('acamedics', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('department_id')->nullable();
-            $table->string('type')->nullable();
-            $table->string('code')->unique();
-            $table->string('name');
-            $table->integer('sort')->nullable();
+            $table->foreignId('academic_type_id')->constrained();
+            $table->text('cover')->nullable();
+            $table->text('name');
+            $table->string('description')->nullable();
+            $table->text('documents')->nullable();
+            $table->string('author')->nullable();
+            $table->integer('sort')->default(0);
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('positions');
+        Schema::dropIfExists('acamedics');
     }
 };
