@@ -23,7 +23,37 @@ class ReportStaffSummaryResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('education')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\TextInput::make('work')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\TextInput::make('teaching')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\TextInput::make('academic_service')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\TextInput::make('academic_work')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\TextInput::make('award')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\TextInput::make('research')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
             ]);
     }
 
@@ -31,7 +61,37 @@ class ReportStaffSummaryResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('education')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('work')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('teaching')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('academic_service')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('academic_work')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('award')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('research')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

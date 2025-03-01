@@ -23,7 +23,25 @@ class StaffTeachingResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('staff_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('year')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('institution')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('level')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('documents')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('sort')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\Toggle::make('status')
+                    ->required(),
             ]);
     }
 
@@ -31,7 +49,30 @@ class StaffTeachingResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('staff_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('year')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('institution')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('level')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('documents')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('sort')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\IconColumn::make('status')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

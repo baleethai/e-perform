@@ -23,7 +23,33 @@ class PortfolioResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('staff_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('code')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('no')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('description')
+                    ->columnSpanFull(),
+                Forms\Components\DatePicker::make('started_at'),
+                Forms\Components\DatePicker::make('ended_at'),
+                Forms\Components\Textarea::make('documents')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('sort')
+                    ->numeric(),
+                Forms\Components\Textarea::make('remark')
+                    ->columnSpanFull(),
+                Forms\Components\Toggle::make('is_approve')
+                    ->required(),
+                Forms\Components\Toggle::make('status')
+                    ->required(),
             ]);
     }
 
@@ -31,7 +57,37 @@ class PortfolioResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('staff_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('code')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('no')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('started_at')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('ended_at')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('sort')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\IconColumn::make('is_approve')
+                    ->boolean(),
+                Tables\Columns\IconColumn::make('status')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

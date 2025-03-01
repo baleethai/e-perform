@@ -23,7 +23,28 @@ class PortfolioItemResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('portfolio_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('portfolio_type_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('code')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('name')
+                    ->required()
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('result')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('remark')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('sort')
+                    ->numeric(),
+                Forms\Components\Textarea::make('documents')
+                    ->columnSpanFull(),
+                Forms\Components\Toggle::make('status')
+                    ->required(),
             ]);
     }
 
@@ -31,7 +52,27 @@ class PortfolioItemResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('portfolio_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('portfolio_type_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('code')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('sort')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\IconColumn::make('status')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

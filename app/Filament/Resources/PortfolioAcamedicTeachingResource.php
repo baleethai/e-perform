@@ -23,7 +23,25 @@ class PortfolioAcamedicTeachingResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('portfolio_acamedic_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('subject')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('level')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('number_of_credits')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('number_of_students')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('describe')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('operating')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('thesis')
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('documents')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -31,7 +49,31 @@ class PortfolioAcamedicTeachingResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('portfolio_acamedic_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('subject')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('level')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('number_of_credits')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('number_of_students')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('describe')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('operating')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('thesis')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

@@ -23,7 +23,20 @@ class StaffAcamedicServiceResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('staff_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\Textarea::make('name')
+                    ->required()
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('description')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('documents')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('sort')
+                    ->numeric(),
+                Forms\Components\Toggle::make('status')
+                    ->required(),
             ]);
     }
 
@@ -31,7 +44,26 @@ class StaffAcamedicServiceResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('staff_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('description')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('documents')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('sort')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\IconColumn::make('status')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

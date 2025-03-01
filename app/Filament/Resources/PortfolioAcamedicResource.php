@@ -23,7 +23,19 @@ class PortfolioAcamedicResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('staff_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('no')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\DatePicker::make('started_at')
+                    ->required(),
+                Forms\Components\DatePicker::make('ended_at')
+                    ->required(),
+                Forms\Components\TextInput::make('status')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -31,7 +43,28 @@ class PortfolioAcamedicResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('staff_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('no')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('started_at')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('ended_at')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

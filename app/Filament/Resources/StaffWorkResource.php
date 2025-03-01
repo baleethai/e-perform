@@ -23,7 +23,23 @@ class StaffWorkResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('staff_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('year')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('workplace')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('position')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('work_evidence')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('sort')
+                    ->numeric(),
+                Forms\Components\Toggle::make('status')
+                    ->required(),
             ]);
     }
 
@@ -31,7 +47,30 @@ class StaffWorkResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('staff_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('year')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('workplace')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('position')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('work_evidence')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('sort')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\IconColumn::make('status')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

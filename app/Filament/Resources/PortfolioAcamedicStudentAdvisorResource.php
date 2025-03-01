@@ -23,7 +23,17 @@ class PortfolioAcamedicStudentAdvisorResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('portfolio_acamedic_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\Textarea::make('subject')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('undergraduate')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('graduate_level')
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('documents')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -31,7 +41,21 @@ class PortfolioAcamedicStudentAdvisorResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('portfolio_acamedic_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('undergraduate')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('graduate_level')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
