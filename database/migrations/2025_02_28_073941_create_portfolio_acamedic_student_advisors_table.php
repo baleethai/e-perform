@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('portfolio_acamedic_student_advisors', function (Blueprint $table) {
             $table->id();
-            $table->integer('portfolio_academic_id');
+            $table->integer('portfolio_acamedic_id');
             $table->text('subject')->nullable();
             $table->string('undergraduate')->nullable();
             $table->string('graduate_level')->nullable();

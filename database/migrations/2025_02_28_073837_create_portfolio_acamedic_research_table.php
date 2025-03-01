@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('portfolio_acamedic_research', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('portfolio_academic_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('portfolio_acamedic_id')->constrained();
             $table->string('subject');
             $table->string('time');
             $table->string('funding_source');

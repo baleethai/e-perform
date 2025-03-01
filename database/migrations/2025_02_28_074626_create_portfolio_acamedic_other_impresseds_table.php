@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('portfolio_acamedic_other_impresseds', function (Blueprint $table) {
             $table->id();
-            $table->integer('portfolio_academic_id');
+            $table->integer('portfolio_acamedic_id');
             $table->text('description');
             $table->text('documents')->nullable();
             $table->timestamps();

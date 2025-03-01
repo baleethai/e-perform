@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('personnel_id')->constrained();
+            $table->foreignId('staff_id')->constrained();
             $table->string('code')->unique();
             $table->integer('no')->default(0);
             $table->string('name');

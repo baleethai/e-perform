@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('acamedics', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('academic_type_id')->constrained();
+            $table->foreignId('acamedic_type_id')->constrained();
             $table->text('cover')->nullable();
             $table->text('name');
             $table->string('description')->nullable();
