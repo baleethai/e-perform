@@ -6,10 +6,10 @@ use App\Filament\Resources\PortfolioItemResource\Pages;
 use App\Filament\Resources\PortfolioItemResource\RelationManagers;
 use App\Models\PortfolioItem;
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Resources\Form;
 use Filament\Resources\Resource;
+use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -17,34 +17,63 @@ class PortfolioItemResource extends Resource
 {
     protected static ?string $model = PortfolioItem::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-folder';
+
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('filament.portfolio-manage');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.portfolio-item');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('filament.portfolio-item');
+    }
+
+    protected static bool $shouldRegisterNavigation = false;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('portfolio_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('portfolio_type_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('code')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('name')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('result')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('remark')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('sort')
-                    ->numeric(),
-                Forms\Components\Textarea::make('documents')
-                    ->columnSpanFull(),
-                Forms\Components\Toggle::make('status')
-                    ->required(),
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\Grid::make()
+                            ->schema([
+
+                                Forms\Components\Select::make('portfolio_id')
+                                    ->label(__('filament.portfolio'))
+                                    ->placeholder(__('filament.select-an-option'))
+                                    ->relationship('portfolio', 'name'),
+
+                                Forms\Components\Select::make('portfolio_type_id')
+                                    ->label(__('filament.portfolio-type'))
+                                    ->placeholder(__('filament.select-an-option'))
+                                    ->relationship('portfolioType', 'name'),
+
+                                Forms\Components\TextInput::make('name')
+                                    ->label(__('filament.name'))
+                                    ->placeholder(__('filament.name'))
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->columnSpan(2),
+
+                                Forms\Components\Textarea::make('result')
+                                    ->label(__('filament.portfolio-result'))
+                                    ->placeholder(__('filament.portfolio-result'))
+                                    ->maxLength(65535)
+                                    ->columnSpan(2),
+
+                                Forms\Components\Toggle::make('is_visible')
+                                    ->label(__('filament.is-visible'))
+                                    ->required(),
+
+                            ]),
+                    ]),
             ]);
     }
 
@@ -52,27 +81,16 @@ class PortfolioItemResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('portfolio_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('portfolio_type_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('code')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('sort')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\IconColumn::make('status')
+
+                Tables\Columns\TextColumn::make('portfolio.name')
+                    ->label(__('filament.portfolio')),
+
+                Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament.name')),
+
+                Tables\Columns\IconColumn::make('is_visible')
+                    ->label(__('filament.is-visible'))
                     ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
@@ -81,9 +99,7 @@ class PortfolioItemResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 

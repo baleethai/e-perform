@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\AlbumResource\Pages;
 
 use App\Filament\Resources\AlbumResource;
-use Filament\Actions;
+use Filament\Pages\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateAlbum extends CreateRecord

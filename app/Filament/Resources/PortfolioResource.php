@@ -4,12 +4,15 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PortfolioResource\Pages;
 use App\Filament\Resources\PortfolioResource\RelationManagers;
+use App\Models\Personnel;
 use App\Models\Portfolio;
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Forms\Components\Repeater;
+use Filament\Resources\Form;
 use Filament\Resources\Resource;
+use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Table;
+use Filament\Tables\Actions\Action;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -17,39 +20,117 @@ class PortfolioResource extends Resource
 {
     protected static ?string $model = Portfolio::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-folder';
+
+    protected static bool $shouldRegisterNavigation = false;
+
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('filament.portfolio-manage');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.portfolio');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('filament.portfolio');
+    }
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('staff_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('code')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('no')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('description')
-                    ->columnSpanFull(),
-                Forms\Components\DatePicker::make('started_at'),
-                Forms\Components\DatePicker::make('ended_at'),
-                Forms\Components\Textarea::make('documents')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('sort')
-                    ->numeric(),
-                Forms\Components\Textarea::make('remark')
-                    ->columnSpanFull(),
-                Forms\Components\Toggle::make('is_approve')
-                    ->required(),
-                Forms\Components\Toggle::make('status')
-                    ->required(),
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\Grid::make()
+                            ->schema([
+
+                                Forms\Components\Select::make('personnel_id')
+                                    ->relationship('personnel', 'first_name')
+                                    ->label(__('filament.personnel'))
+                                    ->required()
+                                    ->searchable()
+                                    ->preload()
+                                    ->placeholder(__('filament.personnel')),
+
+                                Forms\Components\TextInput::make('no')
+                                    ->label(__('filament.no_section'))
+                                    ->placeholder(__('filament.no_section'))
+                                    ->required()
+                                    ->numeric()
+                                    ->columnSpan(1),
+
+                                Forms\Components\TextInput::make('name')
+                                    ->label(__('filament.name'))
+                                    ->placeholder(__('filament.name'))
+                                    ->required()
+                                    ->columnSpan(2),
+
+//                                Forms\Components\Textarea::make('description')
+//                                    ->label(__('filament.description'))
+//                                    ->placeholder(__('filament.description'))
+//                                    ->required()
+//                                    ->columnSpan(2),
+
+                                Forms\Components\DatePicker::make('started_at')
+                                    ->label(__('filament.portfolio-date-start'))
+                                    ->placeholder(__('filament.portfolio-date-start'))
+                                    ->timezone('Asia/Bangkok'),
+
+                                Forms\Components\DatePicker::make('ended_at')
+                                    ->label(__('filament.portfolio-date-end'))
+                                    ->placeholder(__('filament.portfolio-date-end'))
+                                    ->timezone('Asia/Bangkok'),
+
+//                                Forms\Components\FileUpload::make('documents')
+//                                    ->nullable()
+//                                    ->multiple()
+//                                    ->label(__('filament.document'))
+//                                    ->columnSpan(2),
+
+                            ]),
+                    ]),
+
+
+                Forms\Components\Card::make()
+                    ->schema([
+
+                        Forms\Components\Grid::make()
+                            ->schema([
+
+                                Forms\Components\Repeater::make('portfolioItems')
+                                    ->label(__('filament.portfolio-item'))
+                                    ->relationship('portfolioItems')
+                                    ->schema([
+
+                                        Forms\Components\Select::make('portfolio_type_id')
+                                            ->label(__('filament.portfolio-type'))
+                                            ->placeholder(__('filament.select-an-option'))
+                                            ->relationship('portfolioType', 'name')
+                                            ->required(),
+
+                                        Forms\Components\TextInput::make('name')
+                                            ->label(__('filament.name'))
+                                            ->placeholder(__('filament.name'))
+                                            ->required()
+                                            ->columnSpan(2),
+
+                                        Forms\Components\Textarea::make('result')
+                                            ->label(__('filament.portfolio-result'))
+                                            ->placeholder(__('filament.portfolio-result'))
+                                            ->nullable()
+                                            ->columnSpan(2),
+
+                                    ])
+                                    ->columns(2),
+
+                                ])
+                                ->columns(1)
+                        ])
             ]);
     }
 
@@ -57,48 +138,49 @@ class PortfolioResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('staff_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('code')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('no')
-                    ->numeric()
-                    ->sortable(),
+
+//                Tables\Columns\TextColumn::make('id')
+//                    ->label(__('ID')),
+
+                Tables\Columns\TextColumn::make('personnel.full_name')
+                    ->label(__('filament.personnel')),
+
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->wrap()
+                    ->label(__('filament.name')),
+
                 Tables\Columns\TextColumn::make('started_at')
-                    ->date()
-                    ->sortable(),
+                    ->label(__('filament.portfolio-date-start'))
+                    ->date(),
+
                 Tables\Columns\TextColumn::make('ended_at')
-                    ->date()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('sort')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\IconColumn::make('is_approve')
-                    ->boolean(),
-                Tables\Columns\IconColumn::make('status')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->label(__('filament.portfolio-date-end'))
+                    ->date(),
+
+//                Tables\Columns\IconColumn::make('is_visible')
+//                    ->label(__('filament.is-visible'))
+//                    ->boolean(),
+
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
+
+                Tables\Actions\ActionGroup::make([
+
+                    Action::make('Certificate')
+                        ->label('รายงาน')
+                        ->url(fn (Portfolio $record): string => route('report.portfolio', [$record, $record->personnel_id]))
+                        ->openUrlInNewTab()
+                        ->icon('heroicon-o-document-text'),
+
+                ])
+
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
@@ -117,4 +199,14 @@ class PortfolioResource extends Resource
             'edit' => Pages\EditPortfolio::route('/{record}/edit'),
         ];
     }
+
+    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        if (auth()->user()->is_staff) {
+            $personnel = Personnel::where('user_id', auth()->user()->id)->first();
+             return parent::getEloquentQuery()->where('personnel_id', $personnel->id);
+        }
+        return parent::getEloquentQuery();
+    }
+
 }

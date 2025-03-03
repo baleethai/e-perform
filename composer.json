@@ -1,26 +1,56 @@
 {
-    "$schema": "https://getcomposer.org/schema.json",
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
-        "filament/filament": "^3.2",
-        "laravel/framework": "^12.0",
-        "laravel/tinker": "^2.10.1"
+        "php": "^8.0.2",
+        "3x1io/filament-user": "^1.1",
+        "barryvdh/laravel-dompdf": "^2.0",
+        "bensampo/laravel-enum": "^6.4",
+        "bezhansalleh/filament-shield": "^2.2",
+        "brunocfalcao/blade-feather-icons": "^2.1",
+        "doctrine/dbal": "^3.4",
+        "filament/filament": "^2.15",
+        "filament/spatie-laravel-media-library-plugin": "^2.15",
+        "filament/spatie-laravel-settings-plugin": "^2.0",
+        "filament/spatie-laravel-tags-plugin": "^2.15",
+        "filament/spatie-laravel-translatable-plugin": "^2.15",
+        "filament/tables": "^2.0",
+        "flowframe/laravel-trend": "^0.1.5",
+        "fruitcake/laravel-cors": "^2.0.5",
+        "guzzlehttp/guzzle": "^7.2",
+        "jenssegers/agent": "^2.6",
+        "laravel/framework": "^9.19",
+        "laravel/sanctum": "^2.14.1",
+        "laravel/tinker": "^2.7",
+        "leandrocfe/filament-apex-charts": "^2.0",
+        "livewire/livewire": "^2.10",
+        "phattarachai/thaidate": "^12.1",
+        "sirajcse/laravel-unique-id-generator": "^1.0",
+        "squirephp/countries-en": "^3.3",
+        "squirephp/currencies-en": "^3.3",
+        "wireui/wireui": "^1.17"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.23",
-        "laravel/pail": "^1.2.2",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "^1.41",
-        "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.6",
-        "phpunit/phpunit": "^11.5.3"
+        "barryvdh/laravel-debugbar": "^3.6",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.1",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "nunomaduro/larastan": "^2.1",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0"
     },
     "autoload": {
+        "files": [
+            "app/Helpers/helpers.php"
+        ],
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
@@ -35,23 +65,17 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi",
-            "@php artisan filament:upgrade"
+            "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan filament:upgrade"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi",
-            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-            "@php artisan migrate --graceful --ansi"
-        ],
-        "dev": [
-            "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
+            "@php artisan key:generate --ansi"
         ]
     },
     "extra": {
@@ -64,10 +88,9 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "composer/package-versions-deprecated": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

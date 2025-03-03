@@ -6,10 +6,10 @@ use App\Filament\Resources\ReportEducationLevelResource\Pages;
 use App\Filament\Resources\ReportEducationLevelResource\RelationManagers;
 use App\Models\ReportEducationLevel;
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Resources\Form;
 use Filament\Resources\Resource;
+use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -17,7 +17,24 @@ class ReportEducationLevelResource extends Resource
 {
     protected static ?string $model = ReportEducationLevel::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-folder';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('filament.report');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.report-education-level');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('filament.report-education-level');
+    }
 
     public static function form(Form $form): Form
     {
@@ -27,9 +44,7 @@ class ReportEducationLevelResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('total')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
+                    ->required(),
             ]);
     }
 
@@ -37,19 +52,13 @@ class ReportEducationLevelResource extends Resource
     {
         return $table
             ->columns([
+
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->label(__('filament.personnel')),
+
                 Tables\Columns\TextColumn::make('total')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->label(__('filament.total')),
+
             ])
             ->filters([
                 //
@@ -58,9 +67,7 @@ class ReportEducationLevelResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 

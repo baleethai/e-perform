@@ -1,30 +1,18 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Enums;
 
-use Filament\Support\Contracts\HasLabel;
+use BenSampo\Enum\Contracts\LocalizedEnum;
+use BenSampo\Enum\Enum;
 
-enum WorkStatus: string implements HasLabel
+/**
+ * @method static static PERFORMWORK()
+ * @method static static RESIGN()
+ * @method static static RETIREMENT()
+ */
+final class WorkStatus extends Enum implements LocalizedEnum
 {
-    case PERFORMWORK = 'performwork';
-    case RESIGN = 'resign';
-    case RETIREMENT = 'retirement';
-
-    public function getLabel(): ?string
-    {
-        return match ($this) {
-            self::PERFORMWORK => 'Performwork',
-            self::RESIGN => 'Resign',
-            self::RETIREMENT => 'Retirement',
-        };
-    }
-    
-    public function getColor(): string | array | null
-    {
-        return match ($this) {
-            self::PERFORMWORK => 'success',
-            self::RESIGN => 'warning',
-            self::RETIREMENT => 'gray',
-        };
-    }    
+    const PERFORMWORK = 1;
+    const RESIGN = 2;
+    const RETIREMENT = 3;
 }

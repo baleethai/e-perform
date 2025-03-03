@@ -3,17 +3,18 @@
 namespace App\Filament\Resources\DepartmentResource\Pages;
 
 use App\Filament\Resources\DepartmentResource;
-use Filament\Actions;
+use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 
 class ListDepartments extends ListRecords
 {
     protected static string $resource = DepartmentResource::class;
 
-    protected function getHeaderActions(): array
+    protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            (Actions\CreateAction::make())
+                ->label(__('filament.new-record', ['record' => $this->getModelLabel()])),
         ];
     }
 }

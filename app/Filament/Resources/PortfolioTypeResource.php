@@ -6,10 +6,10 @@ use App\Filament\Resources\PortfolioTypeResource\Pages;
 use App\Filament\Resources\PortfolioTypeResource\RelationManagers;
 use App\Models\PortfolioType;
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Resources\Form;
 use Filament\Resources\Resource;
+use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -17,26 +17,45 @@ class PortfolioTypeResource extends Resource
 {
     protected static ?string $model = PortfolioType::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-folder';
+
+    protected static bool $shouldRegisterNavigation = false;
+
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('filament.portfolio-manage');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.portfolio-type');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('filament.portfolio-type');
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('code')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('description')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('sort')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-                Forms\Components\Toggle::make('status')
-                    ->required(),
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\Grid::make()
+                            ->schema([
+
+                                Forms\Components\TextInput::make('name')
+                                    ->label(__('filament.name'))
+                                    ->placeholder(__('filament.name'))
+                                    ->required(),
+
+                                Forms\Components\Toggle::make('is_visible')
+                                    ->label(__('filament.is-visible'))
+                                    ->default(true),
+
+                            ]),
+                    ]),
             ]);
     }
 
@@ -44,23 +63,21 @@ class PortfolioTypeResource extends Resource
     {
         return $table
             ->columns([
+
                 Tables\Columns\TextColumn::make('code')
-                    ->searchable(),
+                    ->label(__('filament.code')),
+
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('sort')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\IconColumn::make('status')
+                    ->label(__('filament.name')),
+
+                Tables\Columns\TextColumn::make('portfolio_items_count')
+                    ->counts('portfolioItems')
+                    ->label(__('filament.portfolio-item')),
+
+                Tables\Columns\IconColumn::make('is_visible')
+                    ->label(__('filament.is-visible'))
                     ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+
             ])
             ->filters([
                 //
@@ -69,9 +86,7 @@ class PortfolioTypeResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 

@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\ReportPortfolioItemResource\Pages;
 
 use App\Filament\Resources\ReportPortfolioItemResource;
-use Filament\Actions;
+use Filament\Pages\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateReportPortfolioItem extends CreateRecord

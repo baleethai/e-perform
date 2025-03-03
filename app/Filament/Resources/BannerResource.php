@@ -6,10 +6,10 @@ use App\Filament\Resources\BannerResource\Pages;
 use App\Filament\Resources\BannerResource\RelationManagers;
 use App\Models\Banner;
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Resources\Form;
 use Filament\Resources\Resource;
+use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -17,23 +17,61 @@ class BannerResource extends Resource
 {
     protected static ?string $model = Banner::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-folder';
+
+    protected static bool $shouldRegisterNavigation = true;
+
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('filament.setting-system');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.banner');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('filament.banner');
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('summary')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('description')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('images')
-                    ->columnSpanFull(),
-                Forms\Components\Toggle::make('status')
-                    ->required(),
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\Grid::make()
+                            ->schema([
+
+                                Forms\Components\TextInput::make('name')
+                                    ->label(__('filament.name'))
+                                    ->placeholder(__('filament.name'))
+                                    ->required()
+                                    ->maxLength(255),
+
+                                Forms\Components\Textarea::make('summary')
+                                    ->label(__('filament.summary'))
+                                    ->placeholder(__('filament.summary'))
+                                    ->columnSpan(2),
+
+                                Forms\Components\Textarea::make('description')
+                                    ->label(__('filament.description'))
+                                    ->placeholder(__('filament.description'))
+                                    ->columnSpan(2),
+
+                                Forms\Components\FileUpload::make('images')
+                                    ->label(__('filament.image'))
+                                    ->image()
+                                    ->columnSpan(2),
+
+                                Forms\Components\Toggle::make('is_visible')
+                                    ->label(__('filament.is-visible'))
+                                    ->required(),
+
+                            ]),
+                    ]),
             ]);
     }
 
@@ -41,18 +79,19 @@ class BannerResource extends Resource
     {
         return $table
             ->columns([
+
+                Tables\Columns\TextColumn::make('id')
+                    ->label(__('ID')),
+
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament.name'))
                     ->searchable(),
-                Tables\Columns\IconColumn::make('status')
+
+
+                Tables\Columns\IconColumn::make('is_visible')
+                    ->label(__('filament.is-visible'))
                     ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+
             ])
             ->filters([
                 //
@@ -61,9 +100,7 @@ class BannerResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
