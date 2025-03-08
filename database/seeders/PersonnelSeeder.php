@@ -20,6 +20,7 @@ class PersonnelSeeder extends Seeder
         Personnel::create([
             'prefix_id' => 1,
             'position_id' => 1,
+            'code' => '000000001',
             'first_name' => 'สมชาย',
             'last_name' => 'ใจดี',
             'id_card' => '1231322331230',
