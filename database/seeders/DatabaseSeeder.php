@@ -33,8 +33,8 @@ class DatabaseSeeder extends Seeder
         // Superadmin
         User::factory()->create([
             'name' => 'Super Admin',
-            'email' => 'superadmin@superadmin.com',
-            'password' => Hash::make('superadmin'),
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('11111111'),
         ]);
 
         $this->call(PersonnelEducationLevelSeeder::class);
