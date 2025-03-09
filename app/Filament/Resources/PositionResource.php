@@ -94,7 +94,7 @@ class PositionResource extends Resource
 
                 Tables\Columns\TextColumn::make('type')
                     ->label('ประเภท')
-                    ->formatStateUsing(fn (string $state): string => ($state == 'academic') ? 'สายวิชาการ' : 'สายปฏิบัติการ')
+                    ->formatStateUsing(fn (string $state): string => (isset($state) && $state == 'academic') ? 'สายวิชาการ' : 'สายปฏิบัติการ')
                     ->searchable()
                     ->sortable(),
 

@@ -17,10 +17,12 @@ class PositionSeeder extends Seeder
     {
         Position::create([
             'department_id' => 1,
+            'type' => 'academic',
             'name' => 'ผู้อำนวยการ',
         ]);
         Position::create([
             'department_id' => 1,
+            'type' => 'academic',
             'name' => 'รองผู้อำนวยการ',
         ]);
     }
