@@ -16,7 +16,7 @@ class AcademicPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->can('view_any_academic');
     }
@@ -28,7 +28,7 @@ class AcademicPolicy
      * @param  \App\Models\Academic  $academic
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Academic $academic)
+    public function view(User $user, Academic $academic): bool
     {
         return $user->can('view_academic');
     }
@@ -39,7 +39,7 @@ class AcademicPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can('create_academic');
     }
@@ -51,7 +51,7 @@ class AcademicPolicy
      * @param  \App\Models\Academic  $academic
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Academic $academic)
+    public function update(User $user, Academic $academic): bool
     {
         return $user->can('update_academic');
     }
@@ -63,7 +63,7 @@ class AcademicPolicy
      * @param  \App\Models\Academic  $academic
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Academic $academic)
+    public function delete(User $user, Academic $academic): bool
     {
         return $user->can('delete_academic');
     }
@@ -74,7 +74,7 @@ class AcademicPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function deleteAny(User $user)
+    public function deleteAny(User $user): bool
     {
         return $user->can('delete_any_academic');
     }
@@ -86,7 +86,7 @@ class AcademicPolicy
      * @param  \App\Models\Academic  $academic
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Academic $academic)
+    public function forceDelete(User $user, Academic $academic): bool
     {
         return $user->can('force_delete_academic');
     }
@@ -97,7 +97,7 @@ class AcademicPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDeleteAny(User $user)
+    public function forceDeleteAny(User $user): bool
     {
         return $user->can('force_delete_any_academic');
     }
@@ -109,7 +109,7 @@ class AcademicPolicy
      * @param  \App\Models\Academic  $academic
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Academic $academic)
+    public function restore(User $user, Academic $academic): bool
     {
         return $user->can('restore_academic');
     }
@@ -120,7 +120,7 @@ class AcademicPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restoreAny(User $user)
+    public function restoreAny(User $user): bool
     {
         return $user->can('restore_any_academic');
     }
@@ -132,7 +132,7 @@ class AcademicPolicy
      * @param  \App\Models\Academic  $academic
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, Academic $academic)
+    public function replicate(User $user, Academic $academic): bool
     {
         return $user->can('replicate_academic');
     }
@@ -143,7 +143,7 @@ class AcademicPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function reorder(User $user)
+    public function reorder(User $user): bool
     {
         return $user->can('reorder_academic');
     }

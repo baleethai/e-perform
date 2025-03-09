@@ -16,7 +16,7 @@ class BannerPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->can('view_any_banner');
     }
@@ -28,7 +28,7 @@ class BannerPolicy
      * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Banner $banner)
+    public function view(User $user, Banner $banner): bool
     {
         return $user->can('view_banner');
     }
@@ -39,7 +39,7 @@ class BannerPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can('create_banner');
     }
@@ -51,7 +51,7 @@ class BannerPolicy
      * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Banner $banner)
+    public function update(User $user, Banner $banner): bool
     {
         return $user->can('update_banner');
     }
@@ -63,7 +63,7 @@ class BannerPolicy
      * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Banner $banner)
+    public function delete(User $user, Banner $banner): bool
     {
         return $user->can('delete_banner');
     }
@@ -74,7 +74,7 @@ class BannerPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function deleteAny(User $user)
+    public function deleteAny(User $user): bool
     {
         return $user->can('delete_any_banner');
     }
@@ -86,7 +86,7 @@ class BannerPolicy
      * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Banner $banner)
+    public function forceDelete(User $user, Banner $banner): bool
     {
         return $user->can('force_delete_banner');
     }
@@ -97,7 +97,7 @@ class BannerPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDeleteAny(User $user)
+    public function forceDeleteAny(User $user): bool
     {
         return $user->can('force_delete_any_banner');
     }
@@ -109,7 +109,7 @@ class BannerPolicy
      * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Banner $banner)
+    public function restore(User $user, Banner $banner): bool
     {
         return $user->can('restore_banner');
     }
@@ -120,7 +120,7 @@ class BannerPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restoreAny(User $user)
+    public function restoreAny(User $user): bool
     {
         return $user->can('restore_any_banner');
     }
@@ -132,7 +132,7 @@ class BannerPolicy
      * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, Banner $banner)
+    public function replicate(User $user, Banner $banner): bool
     {
         return $user->can('replicate_banner');
     }
@@ -143,7 +143,7 @@ class BannerPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function reorder(User $user)
+    public function reorder(User $user): bool
     {
         return $user->can('reorder_banner');
     }

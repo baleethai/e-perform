@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\LinkType;
+use App\Models\PortfolioOperating;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class LinkTypePolicy
+class PortfolioOperatingPolicy
 {
     use HandlesAuthorization;
 
@@ -16,21 +16,21 @@ class LinkTypePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
-        return $user->can('view_any_link::type');
+        return $user->can('view_any_portfolio::operating');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LinkType  $linkType
+     * @param  \App\Models\PortfolioOperating  $portfolioOperating
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, LinkType $linkType)
+    public function view(User $user, PortfolioOperating $portfolioOperating): bool
     {
-        return $user->can('view_link::type');
+        return $user->can('view_portfolio::operating');
     }
 
     /**
@@ -39,33 +39,33 @@ class LinkTypePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
-        return $user->can('create_link::type');
+        return $user->can('create_portfolio::operating');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LinkType  $linkType
+     * @param  \App\Models\PortfolioOperating  $portfolioOperating
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, LinkType $linkType)
+    public function update(User $user, PortfolioOperating $portfolioOperating): bool
     {
-        return $user->can('update_link::type');
+        return $user->can('update_portfolio::operating');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LinkType  $linkType
+     * @param  \App\Models\PortfolioOperating  $portfolioOperating
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, LinkType $linkType)
+    public function delete(User $user, PortfolioOperating $portfolioOperating): bool
     {
-        return $user->can('delete_link::type');
+        return $user->can('delete_portfolio::operating');
     }
 
     /**
@@ -74,21 +74,21 @@ class LinkTypePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function deleteAny(User $user)
+    public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_link::type');
+        return $user->can('delete_any_portfolio::operating');
     }
 
     /**
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LinkType  $linkType
+     * @param  \App\Models\PortfolioOperating  $portfolioOperating
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, LinkType $linkType)
+    public function forceDelete(User $user, PortfolioOperating $portfolioOperating): bool
     {
-        return $user->can('force_delete_link::type');
+        return $user->can('force_delete_portfolio::operating');
     }
 
     /**
@@ -97,21 +97,21 @@ class LinkTypePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDeleteAny(User $user)
+    public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_link::type');
+        return $user->can('force_delete_any_portfolio::operating');
     }
 
     /**
      * Determine whether the user can restore.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LinkType  $linkType
+     * @param  \App\Models\PortfolioOperating  $portfolioOperating
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, LinkType $linkType)
+    public function restore(User $user, PortfolioOperating $portfolioOperating): bool
     {
-        return $user->can('restore_link::type');
+        return $user->can('restore_portfolio::operating');
     }
 
     /**
@@ -120,21 +120,21 @@ class LinkTypePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restoreAny(User $user)
+    public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_link::type');
+        return $user->can('restore_any_portfolio::operating');
     }
 
     /**
      * Determine whether the user can replicate.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LinkType  $linkType
+     * @param  \App\Models\PortfolioOperating  $portfolioOperating
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, LinkType $linkType)
+    public function replicate(User $user, PortfolioOperating $portfolioOperating): bool
     {
-        return $user->can('replicate_link::type');
+        return $user->can('replicate_portfolio::operating');
     }
 
     /**
@@ -143,9 +143,9 @@ class LinkTypePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function reorder(User $user)
+    public function reorder(User $user): bool
     {
-        return $user->can('reorder_link::type');
+        return $user->can('reorder_portfolio::operating');
     }
 
 }

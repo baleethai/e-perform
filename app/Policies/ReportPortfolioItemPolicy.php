@@ -16,7 +16,7 @@ class ReportPortfolioItemPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->can('view_any_report::portfolio::item');
     }
@@ -28,7 +28,7 @@ class ReportPortfolioItemPolicy
      * @param  \App\Models\ReportPortfolioItem  $reportPortfolioItem
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, ReportPortfolioItem $reportPortfolioItem)
+    public function view(User $user, ReportPortfolioItem $reportPortfolioItem): bool
     {
         return $user->can('view_report::portfolio::item');
     }
@@ -39,7 +39,7 @@ class ReportPortfolioItemPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can('create_report::portfolio::item');
     }
@@ -51,7 +51,7 @@ class ReportPortfolioItemPolicy
      * @param  \App\Models\ReportPortfolioItem  $reportPortfolioItem
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, ReportPortfolioItem $reportPortfolioItem)
+    public function update(User $user, ReportPortfolioItem $reportPortfolioItem): bool
     {
         return $user->can('update_report::portfolio::item');
     }
@@ -63,7 +63,7 @@ class ReportPortfolioItemPolicy
      * @param  \App\Models\ReportPortfolioItem  $reportPortfolioItem
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, ReportPortfolioItem $reportPortfolioItem)
+    public function delete(User $user, ReportPortfolioItem $reportPortfolioItem): bool
     {
         return $user->can('delete_report::portfolio::item');
     }
@@ -74,7 +74,7 @@ class ReportPortfolioItemPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function deleteAny(User $user)
+    public function deleteAny(User $user): bool
     {
         return $user->can('delete_any_report::portfolio::item');
     }
@@ -86,7 +86,7 @@ class ReportPortfolioItemPolicy
      * @param  \App\Models\ReportPortfolioItem  $reportPortfolioItem
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, ReportPortfolioItem $reportPortfolioItem)
+    public function forceDelete(User $user, ReportPortfolioItem $reportPortfolioItem): bool
     {
         return $user->can('force_delete_report::portfolio::item');
     }
@@ -97,7 +97,7 @@ class ReportPortfolioItemPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDeleteAny(User $user)
+    public function forceDeleteAny(User $user): bool
     {
         return $user->can('force_delete_any_report::portfolio::item');
     }
@@ -109,7 +109,7 @@ class ReportPortfolioItemPolicy
      * @param  \App\Models\ReportPortfolioItem  $reportPortfolioItem
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, ReportPortfolioItem $reportPortfolioItem)
+    public function restore(User $user, ReportPortfolioItem $reportPortfolioItem): bool
     {
         return $user->can('restore_report::portfolio::item');
     }
@@ -120,7 +120,7 @@ class ReportPortfolioItemPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restoreAny(User $user)
+    public function restoreAny(User $user): bool
     {
         return $user->can('restore_any_report::portfolio::item');
     }
@@ -132,7 +132,7 @@ class ReportPortfolioItemPolicy
      * @param  \App\Models\ReportPortfolioItem  $reportPortfolioItem
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, ReportPortfolioItem $reportPortfolioItem)
+    public function replicate(User $user, ReportPortfolioItem $reportPortfolioItem): bool
     {
         return $user->can('replicate_report::portfolio::item');
     }
@@ -143,7 +143,7 @@ class ReportPortfolioItemPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function reorder(User $user)
+    public function reorder(User $user): bool
     {
         return $user->can('reorder_report::portfolio::item');
     }

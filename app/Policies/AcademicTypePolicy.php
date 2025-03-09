@@ -16,7 +16,7 @@ class AcademicTypePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->can('view_any_academic::type');
     }
@@ -28,7 +28,7 @@ class AcademicTypePolicy
      * @param  \App\Models\AcademicType  $academicType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, AcademicType $academicType)
+    public function view(User $user, AcademicType $academicType): bool
     {
         return $user->can('view_academic::type');
     }
@@ -39,7 +39,7 @@ class AcademicTypePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can('create_academic::type');
     }
@@ -51,7 +51,7 @@ class AcademicTypePolicy
      * @param  \App\Models\AcademicType  $academicType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, AcademicType $academicType)
+    public function update(User $user, AcademicType $academicType): bool
     {
         return $user->can('update_academic::type');
     }
@@ -63,7 +63,7 @@ class AcademicTypePolicy
      * @param  \App\Models\AcademicType  $academicType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, AcademicType $academicType)
+    public function delete(User $user, AcademicType $academicType): bool
     {
         return $user->can('delete_academic::type');
     }
@@ -74,7 +74,7 @@ class AcademicTypePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function deleteAny(User $user)
+    public function deleteAny(User $user): bool
     {
         return $user->can('delete_any_academic::type');
     }
@@ -86,7 +86,7 @@ class AcademicTypePolicy
      * @param  \App\Models\AcademicType  $academicType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, AcademicType $academicType)
+    public function forceDelete(User $user, AcademicType $academicType): bool
     {
         return $user->can('force_delete_academic::type');
     }
@@ -97,7 +97,7 @@ class AcademicTypePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDeleteAny(User $user)
+    public function forceDeleteAny(User $user): bool
     {
         return $user->can('force_delete_any_academic::type');
     }
@@ -109,7 +109,7 @@ class AcademicTypePolicy
      * @param  \App\Models\AcademicType  $academicType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, AcademicType $academicType)
+    public function restore(User $user, AcademicType $academicType): bool
     {
         return $user->can('restore_academic::type');
     }
@@ -120,7 +120,7 @@ class AcademicTypePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restoreAny(User $user)
+    public function restoreAny(User $user): bool
     {
         return $user->can('restore_any_academic::type');
     }
@@ -132,7 +132,7 @@ class AcademicTypePolicy
      * @param  \App\Models\AcademicType  $academicType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, AcademicType $academicType)
+    public function replicate(User $user, AcademicType $academicType): bool
     {
         return $user->can('replicate_academic::type');
     }
@@ -143,7 +143,7 @@ class AcademicTypePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function reorder(User $user)
+    public function reorder(User $user): bool
     {
         return $user->can('reorder_academic::type');
     }

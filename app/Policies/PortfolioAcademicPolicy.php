@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Link;
+use App\Models\PortfolioAcademic;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class LinkPolicy
+class PortfolioAcademicPolicy
 {
     use HandlesAuthorization;
 
@@ -16,21 +16,21 @@ class LinkPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
-        return $user->can('view_any_link');
+        return $user->can('view_any_portfolio::academic');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Link  $link
+     * @param  \App\Models\PortfolioAcademic  $portfolioAcademic
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Link $link)
+    public function view(User $user, PortfolioAcademic $portfolioAcademic): bool
     {
-        return $user->can('view_link');
+        return $user->can('view_portfolio::academic');
     }
 
     /**
@@ -39,33 +39,33 @@ class LinkPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
-        return $user->can('create_link');
+        return $user->can('create_portfolio::academic');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Link  $link
+     * @param  \App\Models\PortfolioAcademic  $portfolioAcademic
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Link $link)
+    public function update(User $user, PortfolioAcademic $portfolioAcademic): bool
     {
-        return $user->can('update_link');
+        return $user->can('update_portfolio::academic');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Link  $link
+     * @param  \App\Models\PortfolioAcademic  $portfolioAcademic
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Link $link)
+    public function delete(User $user, PortfolioAcademic $portfolioAcademic): bool
     {
-        return $user->can('delete_link');
+        return $user->can('delete_portfolio::academic');
     }
 
     /**
@@ -74,21 +74,21 @@ class LinkPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function deleteAny(User $user)
+    public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_link');
+        return $user->can('delete_any_portfolio::academic');
     }
 
     /**
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Link  $link
+     * @param  \App\Models\PortfolioAcademic  $portfolioAcademic
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Link $link)
+    public function forceDelete(User $user, PortfolioAcademic $portfolioAcademic): bool
     {
-        return $user->can('force_delete_link');
+        return $user->can('force_delete_portfolio::academic');
     }
 
     /**
@@ -97,21 +97,21 @@ class LinkPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDeleteAny(User $user)
+    public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_link');
+        return $user->can('force_delete_any_portfolio::academic');
     }
 
     /**
      * Determine whether the user can restore.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Link  $link
+     * @param  \App\Models\PortfolioAcademic  $portfolioAcademic
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Link $link)
+    public function restore(User $user, PortfolioAcademic $portfolioAcademic): bool
     {
-        return $user->can('restore_link');
+        return $user->can('restore_portfolio::academic');
     }
 
     /**
@@ -120,21 +120,21 @@ class LinkPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restoreAny(User $user)
+    public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_link');
+        return $user->can('restore_any_portfolio::academic');
     }
 
     /**
      * Determine whether the user can replicate.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Link  $link
+     * @param  \App\Models\PortfolioAcademic  $portfolioAcademic
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, Link $link)
+    public function replicate(User $user, PortfolioAcademic $portfolioAcademic): bool
     {
-        return $user->can('replicate_link');
+        return $user->can('replicate_portfolio::academic');
     }
 
     /**
@@ -143,9 +143,9 @@ class LinkPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function reorder(User $user)
+    public function reorder(User $user): bool
     {
-        return $user->can('reorder_link');
+        return $user->can('reorder_portfolio::academic');
     }
 
 }

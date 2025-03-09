@@ -16,7 +16,7 @@ class PortfolioPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->can('view_any_portfolio');
     }
@@ -28,7 +28,7 @@ class PortfolioPolicy
      * @param  \App\Models\Portfolio  $portfolio
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Portfolio $portfolio)
+    public function view(User $user, Portfolio $portfolio): bool
     {
         return $user->can('view_portfolio');
     }
@@ -39,7 +39,7 @@ class PortfolioPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can('create_portfolio');
     }
@@ -51,7 +51,7 @@ class PortfolioPolicy
      * @param  \App\Models\Portfolio  $portfolio
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Portfolio $portfolio)
+    public function update(User $user, Portfolio $portfolio): bool
     {
         return $user->can('update_portfolio');
     }
@@ -63,7 +63,7 @@ class PortfolioPolicy
      * @param  \App\Models\Portfolio  $portfolio
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Portfolio $portfolio)
+    public function delete(User $user, Portfolio $portfolio): bool
     {
         return $user->can('delete_portfolio');
     }
@@ -74,7 +74,7 @@ class PortfolioPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function deleteAny(User $user)
+    public function deleteAny(User $user): bool
     {
         return $user->can('delete_any_portfolio');
     }
@@ -86,7 +86,7 @@ class PortfolioPolicy
      * @param  \App\Models\Portfolio  $portfolio
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Portfolio $portfolio)
+    public function forceDelete(User $user, Portfolio $portfolio): bool
     {
         return $user->can('force_delete_portfolio');
     }
@@ -97,7 +97,7 @@ class PortfolioPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDeleteAny(User $user)
+    public function forceDeleteAny(User $user): bool
     {
         return $user->can('force_delete_any_portfolio');
     }
@@ -109,7 +109,7 @@ class PortfolioPolicy
      * @param  \App\Models\Portfolio  $portfolio
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Portfolio $portfolio)
+    public function restore(User $user, Portfolio $portfolio): bool
     {
         return $user->can('restore_portfolio');
     }
@@ -120,7 +120,7 @@ class PortfolioPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restoreAny(User $user)
+    public function restoreAny(User $user): bool
     {
         return $user->can('restore_any_portfolio');
     }
@@ -132,7 +132,7 @@ class PortfolioPolicy
      * @param  \App\Models\Portfolio  $portfolio
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, Portfolio $portfolio)
+    public function replicate(User $user, Portfolio $portfolio): bool
     {
         return $user->can('replicate_portfolio');
     }
@@ -143,7 +143,7 @@ class PortfolioPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function reorder(User $user)
+    public function reorder(User $user): bool
     {
         return $user->can('reorder_portfolio');
     }

@@ -16,7 +16,7 @@ class PersonnelEducationLevelPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->can('view_any_personnel::education::level');
     }
@@ -28,7 +28,7 @@ class PersonnelEducationLevelPolicy
      * @param  \App\Models\PersonnelEducationLevel  $personnelEducationLevel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, PersonnelEducationLevel $personnelEducationLevel)
+    public function view(User $user, PersonnelEducationLevel $personnelEducationLevel): bool
     {
         return $user->can('view_personnel::education::level');
     }
@@ -39,7 +39,7 @@ class PersonnelEducationLevelPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can('create_personnel::education::level');
     }
@@ -51,7 +51,7 @@ class PersonnelEducationLevelPolicy
      * @param  \App\Models\PersonnelEducationLevel  $personnelEducationLevel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, PersonnelEducationLevel $personnelEducationLevel)
+    public function update(User $user, PersonnelEducationLevel $personnelEducationLevel): bool
     {
         return $user->can('update_personnel::education::level');
     }
@@ -63,7 +63,7 @@ class PersonnelEducationLevelPolicy
      * @param  \App\Models\PersonnelEducationLevel  $personnelEducationLevel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, PersonnelEducationLevel $personnelEducationLevel)
+    public function delete(User $user, PersonnelEducationLevel $personnelEducationLevel): bool
     {
         return $user->can('delete_personnel::education::level');
     }
@@ -74,7 +74,7 @@ class PersonnelEducationLevelPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function deleteAny(User $user)
+    public function deleteAny(User $user): bool
     {
         return $user->can('delete_any_personnel::education::level');
     }
@@ -86,7 +86,7 @@ class PersonnelEducationLevelPolicy
      * @param  \App\Models\PersonnelEducationLevel  $personnelEducationLevel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, PersonnelEducationLevel $personnelEducationLevel)
+    public function forceDelete(User $user, PersonnelEducationLevel $personnelEducationLevel): bool
     {
         return $user->can('force_delete_personnel::education::level');
     }
@@ -97,7 +97,7 @@ class PersonnelEducationLevelPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDeleteAny(User $user)
+    public function forceDeleteAny(User $user): bool
     {
         return $user->can('force_delete_any_personnel::education::level');
     }
@@ -109,7 +109,7 @@ class PersonnelEducationLevelPolicy
      * @param  \App\Models\PersonnelEducationLevel  $personnelEducationLevel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, PersonnelEducationLevel $personnelEducationLevel)
+    public function restore(User $user, PersonnelEducationLevel $personnelEducationLevel): bool
     {
         return $user->can('restore_personnel::education::level');
     }
@@ -120,7 +120,7 @@ class PersonnelEducationLevelPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restoreAny(User $user)
+    public function restoreAny(User $user): bool
     {
         return $user->can('restore_any_personnel::education::level');
     }
@@ -132,7 +132,7 @@ class PersonnelEducationLevelPolicy
      * @param  \App\Models\PersonnelEducationLevel  $personnelEducationLevel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, PersonnelEducationLevel $personnelEducationLevel)
+    public function replicate(User $user, PersonnelEducationLevel $personnelEducationLevel): bool
     {
         return $user->can('replicate_personnel::education::level');
     }
@@ -143,7 +143,7 @@ class PersonnelEducationLevelPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function reorder(User $user)
+    public function reorder(User $user): bool
     {
         return $user->can('reorder_personnel::education::level');
     }
