@@ -25,30 +25,10 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
 
-    protected static function getNavigationLabel(): string
-    {
-        return trans('filament-user::user.resource.label');
-    }
-
-    public static function getPluralLabel(): string
-    {
-        return trans('filament-user::user.resource.label');
-    }
-
-    public static function getLabel(): string
-    {
-        return trans('filament-user::user.resource.single');
-    }
-
-    protected static function getNavigationGroup(): ?string
-    {
-        return config('filament-user.group');
-    }
-
-    protected function getTitle(): string
-    {
-        return trans('filament-user::user.resource.title.resource');
-    }
+    protected static ?string $navigationLabel = 'ผู้ดูแลระบบ';
+    protected static ?string $pluralModelLabel = 'ผู้ดูแลระบบ';
+    protected static ?string $modelLabel = 'ผู้ดูแลระบบ';
+    protected static ?string $navigationGroup = 'ตั้งค่าระบบ';
 
     public static function form(Form $form): Form
     {
