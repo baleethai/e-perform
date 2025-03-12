@@ -25,28 +25,14 @@ class PersonnelResource extends Resource
 
     protected static ?string $slug = 'personnels';
 
-    protected static ?string $recordTitleAttribute = 'name';
-
-    protected static ?string $navigationGroup = 'Personnel';
-
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?int $navigationSort = 1;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.personnel-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.personnel');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.personnel');
-    }
+    protected static ?string $navigationLabel = 'บุคลากร';
+    protected static ?string $pluralModelLabel = 'บุคลากร';
+    protected static ?string $modelLabel = 'บุคลากร';
+    protected static ?string $navigationGroup = 'จัดการบุคลากร';
 
     public static function form(Form $form): Form
     {

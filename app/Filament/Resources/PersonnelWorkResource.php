@@ -27,20 +27,10 @@ class PersonnelWorkResource extends Resource
 
     protected static ?int $navigationSort = 3;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.personnel-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.personnel-work');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.personnel-work');
-    }
+    protected static ?string $navigationLabel = 'การทำงาน';
+    protected static ?string $pluralModelLabel = 'การทำงาน';
+    protected static ?string $modelLabel = 'การทำงาน';
+    protected static ?string $navigationGroup = 'จัดการบุคลากร';
 
     public static function form(Form $form): Form
     {

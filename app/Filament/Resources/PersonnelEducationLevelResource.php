@@ -24,21 +24,11 @@ class PersonnelEducationLevelResource extends Resource
 
     protected static ?int $navigationSort = 8;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.personnel-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.education-level');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.education-level');
-    }
-
+    protected static ?string $navigationLabel = 'ระดับการศึกษา';
+    protected static ?string $pluralModelLabel = 'ระดับการศึกษา';
+    protected static ?string $modelLabel = 'ระดับการศึกษา';
+    protected static ?string $navigationGroup = 'จัดการบุคลากร';    
+    
     public static function form(Form $form): Form
     {
         return $form

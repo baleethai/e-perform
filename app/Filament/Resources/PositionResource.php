@@ -26,20 +26,10 @@ class PositionResource extends Resource
 
     protected static ?int $navigationSort = 15;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.personnel-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.position');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.position');
-    }
+    protected static ?string $navigationLabel = 'ตำแหน่ง';
+    protected static ?string $pluralModelLabel = 'ตำแหน่ง';
+    protected static ?string $modelLabel = 'ตำแหน่ง';
+    protected static ?string $navigationGroup = 'จัดการบุคลากร';
 
     public static function form(Form $form): Form
     {

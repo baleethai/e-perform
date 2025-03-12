@@ -23,20 +23,10 @@ class PersonnelTeachingResource extends Resource
 
     protected static ?int $navigationSort = 4;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.personnel-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.personnel-teaching');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.personnel-teaching');
-    }
+    protected static ?string $navigationLabel = 'การสอน';
+    protected static ?string $pluralModelLabel = 'การสอน';
+    protected static ?string $modelLabel = 'การสอน';
+    protected static ?string $navigationGroup = 'จัดการบุคลากร';
 
     public static function form(Form $form): Form
     {

@@ -24,21 +24,10 @@ class PortfolioResource extends Resource
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.portfolio-manage');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.portfolio');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.portfolio');
-    }
-
+    protected static ?string $navigationLabel = 'ภาระงาน';
+    protected static ?string $pluralModelLabel = 'ภาระงาน';
+    protected static ?string $modelLabel = 'ภาระงาน';
+    protected static ?string $navigationGroup = 'แบบประมวลผลบุคลากร';
 
     public static function form(Form $form): Form
     {

@@ -21,21 +21,11 @@ class PortfolioTypeResource extends Resource
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.portfolio-manage');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.portfolio-type');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.portfolio-type');
-    }
-
+    protected static ?string $navigationLabel = 'ประเภทภาระงาน';
+    protected static ?string $pluralModelLabel = 'ประเภทภาระงาน';
+    protected static ?string $modelLabel = 'ประเภทภาระงาน';
+    protected static ?string $navigationGroup = 'แบบประมวลผลบุคลากร';    
+    
     public static function form(Form $form): Form
     {
         return $form

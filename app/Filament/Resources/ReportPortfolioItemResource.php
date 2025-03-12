@@ -21,20 +21,10 @@ class ReportPortfolioItemResource extends Resource
 
     protected static ?int $navigationSort = 2;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.report');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.report-portfolio');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.report-portfolio');
-    }
+    protected static ?string $navigationLabel = 'รายงานภาระงาน';
+    protected static ?string $pluralModelLabel = 'รายงานภาระงาน';
+    protected static ?string $modelLabel = 'รายงานภาระงาน';
+    protected static ?string $navigationGroup = 'รายงาน';
 
     public static function form(Form $form): Form
     {

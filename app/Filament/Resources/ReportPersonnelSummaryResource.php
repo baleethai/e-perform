@@ -21,20 +21,10 @@ class ReportPersonnelSummaryResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.report');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.report-personnel-summary');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.report-personnel-summary');
-    }
+    protected static ?string $navigationLabel = 'รายงานสรุปข้อมูลบุคลากร';
+    protected static ?string $pluralModelLabel = 'รายงานสรุปข้อมูลบุคลากร';
+    protected static ?string $modelLabel = 'รายงานสรุปข้อมูลบุคลากร';
+    protected static ?string $navigationGroup = 'รายงาน';
 
     public static function form(Form $form): Form
     {

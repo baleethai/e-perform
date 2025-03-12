@@ -20,21 +20,14 @@ class PrefixResource extends Resource
 
     protected static ?string $slug = 'prefixs';
 
-    protected static ?string $recordTitleAttribute = 'name';
-
     protected static ?string $navigationIcon = 'heroicon-o-folder';
 
     protected static ?int $navigationSort = 12;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.personnel-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.prefix');
-    }
+    protected static ?string $navigationLabel = 'คำนำหน้า';
+    protected static ?string $pluralModelLabel = 'คำนำหน้า';
+    protected static ?string $modelLabel = 'คำนำหน้า';
+    protected static ?string $navigationGroup = 'จัดการบุคลากร';
 
     public static function getModelLabel(): string
     {

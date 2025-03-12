@@ -23,6 +23,11 @@ class PersonnelPreservingResource extends Resource
 
     protected static ?int $navigationSort = 10;
 
+    protected static ?string $navigationLabel = 'การทำนุบำรุงศิลปวัฒนธรรม';
+    protected static ?string $pluralModelLabel = 'การทำนุบำรุงศิลปวัฒนธรรม';
+    protected static ?string $modelLabel = 'การทำนุบำรุงศิลปวัฒนธรรม';
+    protected static ?string $navigationGroup = 'จัดการบุคลากร';
+
     public static function form(Form $form): Form
     {
         return $form

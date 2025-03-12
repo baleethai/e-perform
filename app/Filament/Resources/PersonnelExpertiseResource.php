@@ -23,20 +23,10 @@ class PersonnelExpertiseResource extends Resource
 
     protected static ?int $navigationSort = 7;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.personnel-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.personnel-expertise');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.personnel-expertise');
-    }
+    protected static ?string $navigationLabel = 'ความเชี่ยวชาญ';
+    protected static ?string $pluralModelLabel = 'ความเชี่ยวชาญ';
+    protected static ?string $modelLabel = 'ความเชี่ยวชาญ';
+    protected static ?string $navigationGroup = 'จัดการบุคลากร';    
 
     public static function form(Form $form): Form
     {

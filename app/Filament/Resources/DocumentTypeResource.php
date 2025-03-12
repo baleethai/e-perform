@@ -22,7 +22,7 @@ class DocumentTypeResource extends Resource
     protected static ?string $navigationLabel = 'ประเภทเอกสาร';
     protected static ?string $pluralModelLabel = 'ประเภทเอกสาร';
     protected static ?string $modelLabel = 'ประเภทเอกสาร';
-    protected static ?string $navigationGroup = 'ประเภทเอกสาร';
+    protected static ?string $navigationGroup = 'จัดการเอกสาร';
 
     public static function form(Form $form): Form
     {

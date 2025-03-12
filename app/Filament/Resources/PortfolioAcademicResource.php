@@ -33,21 +33,11 @@ class PortfolioAcademicResource extends Resource
         }
         return false;
     }
-
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.portfolio-manage');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.portfolio_academic');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.portfolio_academic');
-    }
+    
+    protected static ?string $navigationLabel = 'ประมวลผลงานวิชาการ';
+    protected static ?string $pluralModelLabel = 'ประมวลผลงานวิชาการ';
+    protected static ?string $modelLabel = 'ประมวลผลงานวิชาการ';
+    protected static ?string $navigationGroup = 'แบบประมวลผลบุคลากร';
 
     public static function form(Form $form): Form
     {

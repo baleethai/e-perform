@@ -25,20 +25,10 @@ class PersonnelAcademicWorkResource extends Resource
 
     protected static ?int $navigationSort = 5;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.personnel-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.personnel-academic-work');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.personnel-academic-work');
-    }
+    protected static ?string $navigationLabel = 'ผลงานวิชาการ';
+    protected static ?string $pluralModelLabel = 'ผลงานวิชาการ';
+    protected static ?string $modelLabel = 'ผลงานวิชาการ';
+    protected static ?string $navigationGroup = 'จัดการบุคลากร';
 
     public static function form(Form $form): Form
     {

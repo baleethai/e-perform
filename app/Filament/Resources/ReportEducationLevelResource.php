@@ -21,20 +21,10 @@ class ReportEducationLevelResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.report');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.report-education-level');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.report-education-level');
-    }
+    protected static ?string $navigationLabel = 'รายงานระดับการศึกษา';
+    protected static ?string $pluralModelLabel = 'รายงานระดับการศึกษา';
+    protected static ?string $modelLabel = 'รายงานระดับการศึกษา';
+    protected static ?string $navigationGroup = 'รายงาน';
 
     public static function form(Form $form): Form
     {

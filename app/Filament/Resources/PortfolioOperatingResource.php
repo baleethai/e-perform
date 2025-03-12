@@ -33,20 +33,10 @@ class PortfolioOperatingResource extends Resource
         return false;
     }
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.portfolio-manage');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.portfolio-operating');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.portfolio-operating');
-    }
+    protected static ?string $navigationLabel = 'ประมวลผลงานปฏิบัติการ';
+    protected static ?string $pluralModelLabel = 'ประมวลผลงานปฏิบัติการ';
+    protected static ?string $modelLabel = 'ประมวลผลงานปฏิบัติการ';
+    protected static ?string $navigationGroup = 'แบบประมวลผลบุคลากร';
 
     public static function form(Form $form): Form
     {

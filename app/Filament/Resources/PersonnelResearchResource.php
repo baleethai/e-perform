@@ -24,20 +24,10 @@ class PersonnelResearchResource extends Resource
 
     protected static ?int $navigationSort = 11;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.personnel-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.personnel-research');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.personnel-research');
-    }
+    protected static ?string $navigationLabel = 'ผลงานวิจัย';
+    protected static ?string $pluralModelLabel = 'ผลงานวิจัย';
+    protected static ?string $modelLabel = 'ผลงานวิจัย';
+    protected static ?string $navigationGroup = 'จัดการบุคลากร';    
 
     public static function form(Form $form): Form
     {

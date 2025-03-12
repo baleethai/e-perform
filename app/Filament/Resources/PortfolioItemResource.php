@@ -19,21 +19,11 @@ class PortfolioItemResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-folder';
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.portfolio-manage');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.portfolio-item');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.portfolio-item');
-    }
-
+    protected static ?string $navigationLabel = 'รายการภาระงาน';
+    protected static ?string $pluralModelLabel = 'รายการภาระงาน';
+    protected static ?string $modelLabel = 'รายการภาระงาน';
+    protected static ?string $navigationGroup = 'แบบประมวลผลบุคลากร';    
+    
     protected static bool $shouldRegisterNavigation = false;
 
     public static function form(Form $form): Form
