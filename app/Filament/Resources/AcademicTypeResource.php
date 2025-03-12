@@ -19,20 +19,10 @@ class AcademicTypeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-folder';
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.academic-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.academic-type');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.academic-type');
-    }
+    protected static ?string $navigationLabel = 'ประเภทงานวิชาการ';
+    protected static ?string $pluralModelLabel = 'ประเภทงานวิชาการ';
+    protected static ?string $modelLabel = 'ประเภทงานวิชาการ';
+    protected static ?string $navigationGroup = 'จัดการงานวิชาการ';
 
     public static function form(Form $form): Form
     {

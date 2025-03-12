@@ -21,20 +21,10 @@ class BannerResource extends Resource
 
     protected static bool $shouldRegisterNavigation = true;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.setting-system');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.banner');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.banner');
-    }
+    protected static ?string $navigationLabel = 'แบนเนอร์';
+    protected static ?string $pluralModelLabel = 'แบนเนอร์';
+    protected static ?string $modelLabel = 'แบนเนอร์';
+    protected static ?string $navigationGroup = 'ตั้งค่าระบบ';    
 
     public static function form(Form $form): Form
     {

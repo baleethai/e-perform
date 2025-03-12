@@ -27,21 +27,10 @@ class DepartmentResource extends Resource
 
     protected static ?int $navigationSort = 14;
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.personnel-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.department');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.department');
-    }
-
+    protected static ?string $navigationLabel = 'แผนก';
+    protected static ?string $pluralModelLabel = 'แผนก';
+    protected static ?string $modelLabel = 'แผนก';
+    protected static ?string $navigationGroup = 'จัดการบุคลากร';
 
     public static function form(Form $form): Form
     {

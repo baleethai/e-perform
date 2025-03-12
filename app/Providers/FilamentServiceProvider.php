@@ -8,6 +8,8 @@ use Filament\Navigation\NavigationBuilder;
 use Filament\Navigation\NavigationItem;
 use Filament\Navigation\UserMenuItem;
 use Illuminate\Support\ServiceProvider;
+use Filament\Support\Colors\Color;
+use Filament\Support\Facades\FilamentColor;
 
 class FilamentServiceProvider extends ServiceProvider
 {
@@ -16,14 +18,14 @@ class FilamentServiceProvider extends ServiceProvider
         app()->setLocale('th');
 
         Filament::registerNavigationGroups([
-            __('filament.personnel-management'),
-            __('filament.portfolio-manage'),
-            __('filament.academic-management'),
-            __('filament.news-manage'),
-            __('filament.document-management'),
-            __('filament.album-image-system'),
-            __('filament.report'),
-            __('filament.setting-system'),
+            'จัดการบุคลากร',
+            'แบบประมวลผลบุคลากร',
+            'จัดการงานวิชาการ',
+            'จัดการข่าวประชาสัมพันธ์',
+            'จัดการเอกสาร',
+            'จัดการอัลบั้มรูปภาพ',
+            'รายงาน',
+            'ตั้งค่าระบบ',
         ]);
 
         Filament::serving(function () {
@@ -41,9 +43,8 @@ class FilamentServiceProvider extends ServiceProvider
             }
         });
 
-
         Filament::registerStyles([
             asset('css/filament.css'),
-        ]);
+        ]);    
     }
 }

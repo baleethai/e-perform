@@ -28,7 +28,7 @@ class UserResource extends Resource
     protected static ?string $navigationLabel = 'ผู้ดูแลระบบ';
     protected static ?string $pluralModelLabel = 'ผู้ดูแลระบบ';
     protected static ?string $modelLabel = 'ผู้ดูแลระบบ';
-    protected static ?string $navigationGroup = 'ตั้งค่าระบบ';
+    protected static ?string $navigationGroup = 'ตั้งค่าระบบ'; 
 
     public static function form(Form $form): Form
     {

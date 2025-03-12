@@ -19,20 +19,10 @@ class DocumentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-folder';
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.document-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.document');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.document');
-    }
+    protected static ?string $navigationLabel = 'เอกสาร';
+    protected static ?string $pluralModelLabel = 'เอกสาร';
+    protected static ?string $modelLabel = 'เอกสาร';
+    protected static ?string $navigationGroup = 'จัดการเอกสาร';    
 
     public static function form(Form $form): Form
     {

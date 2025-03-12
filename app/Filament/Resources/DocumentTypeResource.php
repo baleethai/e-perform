@@ -18,21 +18,11 @@ class DocumentTypeResource extends Resource
     protected static ?string $model = DocumentType::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-folder';
-
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.document-management');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.document-type');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.document-type');
-    }
+    
+    protected static ?string $navigationLabel = 'ประเภทเอกสาร';
+    protected static ?string $pluralModelLabel = 'ประเภทเอกสาร';
+    protected static ?string $modelLabel = 'ประเภทเอกสาร';
+    protected static ?string $navigationGroup = 'ประเภทเอกสาร';
 
     public static function form(Form $form): Form
     {

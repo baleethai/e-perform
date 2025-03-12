@@ -19,20 +19,10 @@ class AlbumTypeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-folder';
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('filament.album-image-system');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('filament.album-type');
-    }
-
-    public static function getModelLabel(): string
-    {
-        return __('filament.album-type');
-    }
+    protected static ?string $navigationLabel = 'ประเภทอัลบั้ม';
+    protected static ?string $pluralModelLabel = 'ประเภทอัลบั้ม';
+    protected static ?string $modelLabel = 'ประเภทอัลบั้ม';
+    protected static ?string $navigationGroup = 'จัดการอัลบั้มรูปภาพ';
 
     public static function form(Form $form): Form
     {
