@@ -1,15 +1,15 @@
-# Filament Demo App
+# E-Perform App
 
-A demo application to illustrate how Filament Admin works.
+A demo application to illustrate how E-Perform Admin works.
 
-![Filament Demo](https://user-images.githubusercontent.com/21066418/180368112-cfccda8d-a442-43e3-8cf3-3ba04f42247d.png)
+![E-Perform](https://e-perform.mcu.ac.th/img/demo.png)
 
 ## Installation
 
 Clone the repo locally:
 
 ```sh
-git clone https://github.com/laravel-filament/demo.git filament-demo && cd filament-demo
+git clone https://github.com/baleethai/e-perform.git e-perform && cd e-perform
 ```
 
 Install PHP dependencies:
@@ -39,29 +39,7 @@ touch database/database.sqlite
 Run database migrations:
 
 ```sh
-php artisan migrate
-```
-
-Run database seeder:
-
-```sh
-php artisan db:seed
-```
-
-Create a symlink to the storage:
-
-```sh
-php artisan storage:link
-```
-
-Run the dev server (the output will give the address):
-
-```sh
-php artisan serve
-```
-
-```sh
-php artisan shield:install --fresh
+php artisan migrate:fresh --seed && php artisan shield:install --fresh
 ```
 
 You're ready to go! Visit the url in your browser, and login with:
