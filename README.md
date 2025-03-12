@@ -60,6 +60,10 @@ Run the dev server (the output will give the address):
 php artisan serve
 ```
 
+```sh
+php artisan shield:install --fresh
+```
+
 You're ready to go! Visit the url in your browser, and login with:
 
 -   **Username:** admin@admin.com
