@@ -30,15 +30,15 @@ class FilamentServiceProvider extends ServiceProvider
 
         Filament::serving(function () {
             if (auth()->check()) {
-                $personnel = Personnel::where('user_id', auth()->user()->id)->first();
-                if ($personnel) {
-                    Filament::registerUserMenuItems([
-                        // UserMenuItem::make()
-                        //     ->label('เปลี่ยนรหัสผ่าน')
-                        //     ->url(route('filament.pages.profile'))
-                        //     ->icon('heroicon-o-user-circle'),
-                    ]);
-                }
+                // $personnel = Personnel::where('user_id', auth()->user()->id)->first();
+                // if ($personnel) {
+                //     Filament::registerUserMenuItems([
+                //         UserMenuItem::make()
+                //             ->label('เปลี่ยนรหัสผ่าน')
+                //             ->url(route('filament.pages.profile'))
+                //             ->icon('heroicon-o-user-circle'),
+                //     ]);
+                // }
 
             }
         });
