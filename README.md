@@ -38,7 +38,11 @@ Run database migrations:
 php artisan migrate:fresh --seed && php artisan shield:install --fresh
 ```
 
-You're ready to go! Visit the url in your browser, and login with:
+สร้าง User
+
+```sh
+php artisan make:filament-user
+```
 
 -   **Username:** admin@admin.com
 -   **Password:** 11111111
