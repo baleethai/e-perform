@@ -30,6 +30,12 @@ Generate application key:
 php artisan key:generate
 ```
 
+Generate storage link
+
+```sh
+php artisan storage:link
+```
+
 สร้างฐานข้อมูลชื่อว่า "e_perform"
 
 Run database migrations:
