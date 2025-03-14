@@ -71,8 +71,8 @@ class Personnel extends Authenticatable implements HasMedia
             $user = User::where('email', $model->email)->first();
             if ($user) {
                 $user->email = $model->email;
-                $user->password = bcrypt($model->password);
-                $user->save();
+                // $user->password = bcrypt($model->password);
+                // $user->save();
             } else {
                 $user = User::create([
                     'name' => $model->first_name . ' ' . $model->last_name,
