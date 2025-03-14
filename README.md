@@ -30,11 +30,7 @@ Generate application key:
 php artisan key:generate
 ```
 
-Create an SQLite database. You can also use another database (MySQL, Postgres), simply update your configuration accordingly.
-
-```sh
-touch database/database.sqlite
-```
+สร้างฐานข้อมูลชื่อว่า "e_perform"
 
 Run database migrations:
 
