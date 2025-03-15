@@ -8,8 +8,6 @@ class News extends Component
 {
     public function render()
     {
-        return view('livewire.news', [
-            'news' => \App\Models\Blog\Post::latest()->simplePaginate(9)
-        ]);
+        return view('livewire.news');
     }
 }

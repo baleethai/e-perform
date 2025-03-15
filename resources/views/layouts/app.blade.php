@@ -17,24 +17,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-	<!-- Core Style -->
-	<link rel="stylesheet" href="{{ asset('assets/style.css') }}">
-
-	<!-- Font Icons -->
-	<link rel="stylesheet" href="{{ asset('assets/css/font-icons.css') }}">
-
-	<!-- Plugins/Components CSS -->
-	<link rel="stylesheet" href="{{ asset('assets/css/swiper.css') }}">
-
-	<!-- Niche Demos -->
-	<link rel="stylesheet" href="{{ asset('assets/demos/construction/construction.css') }}">
-
-	<!-- Custom Style -->
-	<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
-
-	<!-- Custom CSS -->
-	<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
-
 	<title>{{ (new GeneralSettings())->site_name }}</title>
 
 </head>
@@ -47,13 +29,13 @@
 
 		<!-- Top Bar
 		============================================= -->
-        @include('partials.topbar')
+        {{-- @include('partials.topbar')
 
-		@include('partials.header')
+		@include('partials.header') --}}
 
 		@yield('content')
 
-		@include('partials.footer')
+		{{-- @include('partials.footer') --}}
 
 	</div>
 

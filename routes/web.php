@@ -5,31 +5,7 @@ use App\Http\Controllers\ReportPortfolioAcademic;
 use App\Http\Controllers\ReportPortfolioAcademicDocument;
 use App\Http\Controllers\ReportPortfolioOperating;
 use App\Http\Controllers\ReportPortfolioOperatingDocument;
-use App\Models\Personnel;
-use App\Models\PortfolioOperating;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
-
-//
-//Route::get('test', function () {
-//    $personnels = Personnel::whereNull('user_id')->get();
-//    foreach ($personnels as $personnel) {
-//        $user = User::where('email', $personnel->email)->first();
-//        if ($user) {
-//            $personnel->user_id = $user->id;
-//            $personnel->save();
-//            continue;
-//        } else {
-//            $user = User::create([
-//                'name' => $personnel->first_name . ' ' . $personnel->last_name,
-//                'email' => $personnel->email,
-//                'password' => bcrypt($personnel->password),
-//            ]);
-//            $personnel->user_id = $user->id;
-//            $personnel->save();
-//        }
-//    }
-//});
 
 Route::get('/news/{post}', \App\Http\Livewire\ShowNews::class)->name('news.show');
 Route::get('/news', \App\Http\Livewire\News::class)->name('news.index');
@@ -55,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/', function() {
-    return redirect('siteadmin');
-})->name('home');
+    return 'Welcome to the home page';
+    // return redirect('siteadmin');
+})->name('home.index');
 
