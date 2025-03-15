@@ -31,7 +31,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/', function() {
-    return 'Welcome to the home';
-    // return redirect('siteadmin');
+    return redirect('siteadmin');
 })->name('home.index');
 
